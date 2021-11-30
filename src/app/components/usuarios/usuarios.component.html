@@ -1,0 +1,59 @@
+<h1>Listado de Usuarios</h1>
+<hr>
+<div class="row">
+    <div class="col text-end">
+        <button routerLink="/usuario/nuevo" class="btn btn-primary">
+            <i class="fa fa-plus"></i>
+            Agregar
+        </button>
+    </div>
+</div>
+<table *ngIf="!cargando && usuarios.length>0" class="table mt-5">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Estado</th>
+        <th scope="col tools" style="text-align:center">Tools</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarios; let i=index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{usuario.nombre}}</td>
+        <td>{{usuario.apellidos}}</td>
+
+        <td>
+            <label  *ngIf="usuario.activo"  class="badge bg-success">Activo</label>
+            <label *ngIf="!usuario.activo"  class="badge bg-danger">NoActivo</label>
+        </td>
+        <td class="d-flex justify-content-center">
+          <button class="btn btn-info mx-2" [routerLink]="['/usuario',usuario.id]">
+            <i class="fa fa-pen"></i>
+          </button>
+
+          <button (click)="borrarUsuario(usuario,i)" class="btn btn-danger mx-2">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+      
+    </tbody>
+</table>
+<div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+      <h4  class="alert-heading">Cargando</h4>
+      <p class="mt-3">
+        <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+      </p>
+      <p>
+          Espere por favor
+      </p>
+</div>
+<div *ngIf="!cargando && usuarios.length===0" class="alert alert-warning text-center mt-3">
+    <h4  class="alert-heading">No hay registros</h4>
+    <p class="mt-3">
+      <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+    
+</div>

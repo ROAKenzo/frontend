@@ -1,0 +1,76 @@
+<h1>Usuario <small>Nombre del Usuario</small>  </h1>
+<hr>
+<div class="row">
+    <div class="col text-end">
+        <button routerLink='/usuarios' class="btn btn-danger">
+            <i class="fa fa-arrow-left "></i>
+            Regresar
+        </button>
+    </div>
+</div>
+<form (ngSubmit)="guardar(f)" #f='ngForm'>
+    <div class="mb-3">
+      <label  class="form-label">ID</label>
+      <input 
+      type="text" 
+      class="form-control" 
+      disabled="disabled" 
+      placeholder="ID"
+      [(ngModel)]="usuario.id"
+      name="id"
+      >
+      <div id="emailHelp" class="form-text">Este campo es autogenerado</div>
+    </div>
+
+    <div class="mb-3">
+        <label  class="form-label">Nombre</label>
+        <input 
+        type="text" 
+        class="form-control" 
+        
+        placeholder="Nombre del usuario"
+        [(ngModel)]="usuario.nombre"
+        name="nombre"
+        required>
+        
+      </div>
+
+      <div class="mb-3">
+        <label  class="form-label">Apellidos</label>
+        <input 
+        type="text" 
+        class="form-control" 
+         
+        placeholder="Apellidos del usuario"
+        [(ngModel)]="usuario.apellidos"
+        name="apellidos"
+        >
+        
+      </div>
+      
+      <div class="row">
+          <div class="col">
+              <button *ngIf="usuario.activo"
+                      (click)="usuario.activo=false"
+               class="btn btn-outline-success w-50">
+                <i class="fa fa-smile"></i>
+                activo
+              </button>
+              <button *ngIf="!usuario.activo"
+              (click)="usuario.activo=true" 
+              class="btn btn-outline-danger w-50" type="button">
+                  <i class="fa fa-dizzy"></i>
+                Muerto
+              </button>
+          </div>
+
+      </div>
+    <hr>
+    <div class="form-group text-center">
+              <button type="submit" class="btn btn-primary   w-25">
+                <i class="fa fa-save"></i>
+                Guardar
+              </button>
+    </div>
+  </form>
+
