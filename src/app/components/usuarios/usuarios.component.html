@@ -21,12 +21,12 @@
     <tbody>
       <tr *ngFor="let usuario of usuarios; let i=index">
         <th scope="row">{{i+1}}</th>
-        <td>{{usuario.nombre}}</td>
-        <td>{{usuario.apellidos}}</td>
+        <td>{{usuario.FirstName}}</td>
+        <td>{{usuario.LastName}}</td>
 
         <td>
-            <label  *ngIf="usuario.activo"  class="badge bg-success">Activo</label>
-            <label *ngIf="!usuario.activo"  class="badge bg-danger">NoActivo</label>
+            <label  *ngIf="usuario.IsVerified"  class="badge bg-success">Verificado</label>
+            <label *ngIf="!usuario.IsVerified"  class="badge bg-danger">NoVerificado</label>
         </td>
         <td class="d-flex justify-content-center">
           <button class="btn btn-info mx-2" [routerLink]="['/usuario',usuario.id]">

@@ -7,26 +7,26 @@ import { map,delay } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private url = 'https://localhost:5001/api';
+  private url = 'https://localhost:5001/Accounts';
   
 
   constructor(private http: HttpClient) {
   }
   crearUsuario(usuario: UsuarioModel) {
-    return this.http.post(`${this.url}/Usuario`, usuario)
+    return this.http.post(`${this.url}/register/`, usuario)
       .pipe(map((res: any) => {
-        usuario.id = res.name;
+        usuario.id = res.FirstName;
         return usuario;
       }))
   }
 
   getUsuario(id:string){
-     return this.http.get(`${this.url}/Usuario/${id}`)
+     return this.http.get(`${this.url}/${id}`)
 
   }
 
   getUsuarios(){
-    return this.http.get(`${this.url}/Usuario`)
+    return this.http.get(`${this.url}`)
     .pipe(
       map(this.crearArreglo),
       delay(1500)
@@ -38,11 +38,11 @@ export class UsuarioService {
       ...usuario
     };
     delete UsuarioTemp.id;
-    return this.http.put(`${this.url}/Usuario/${usuario.id}`,UsuarioTemp)
+    return this.http.put(`${this.url}/${usuario.id}`,UsuarioTemp)
   }
 
   borrarUsuario(id:string){
-    return this.http.delete(`${this.url}/Usuario/${id}`)
+    return this.http.delete(`${this.url}/${id}`)
   }
 
   private crearArreglo(usuariosObj:Record<string, any>){

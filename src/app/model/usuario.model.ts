@@ -3,11 +3,11 @@ import { UsuarioComponent } from "../components/usuario/usuario.component";
 
 export class UsuarioModel{
     id?: string;
-    nombre?: string;
-    apellidos?: string;
-    activo?: boolean;
+    FirstName?: string;
+    LastName?: string;
+    IsVerified?: boolean;
 
     constructor(){
-        this.activo=true;
+        this.IsVerified=true;
     }
 }

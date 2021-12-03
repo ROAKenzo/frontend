@@ -54,7 +54,7 @@ guardar(form: NgForm) {
   }
   peticion.subscribe(res =>{
     Swal.fire({
-      title:this.usuario.nombre,
+      title:this.usuario.FirstName,
       text:'Se actualizó correctamente',
       icon:'success'
     })
