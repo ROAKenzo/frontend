@@ -21,8 +21,8 @@
     <tbody>
       <tr *ngFor="let usuario of usuarios; let i=index">
         <th scope="row">{{i+1}}</th>
-        <td>{{usuario.FirstName}}</td>
-        <td>{{usuario.LastName}}</td>
+        <td>{{usuario.firstName}}</td>
+        <td>{{usuario.lastName}}</td>
 
         <td>
             <label  *ngIf="usuario.IsVerified"  class="badge bg-success">Verificado</label>
